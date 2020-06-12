@@ -20,20 +20,4 @@ async def on_node(name, labels, logger, patch, **kwargs):
 
 @kopf.on.login(errors=kopf.ErrorsMode.PERMANENT)
 async def login_fn(**kwargs):
-    # Configs can be set in Configuration class directly or using helper utility
-    config.load_kube_config()
-    contexts, active_context = config.list_kube_config_contexts()
-    print(active_context)
-
-    conf = configuration.Configuration()
-    token = conf.api_key['authorization'].split(' ')[1]
-    server = conf.host
-    verify_ssl = conf.verify_ssl
-    ssl_ca_cert = conf.ssl_ca_cert
-
-    return kopf.ConnectionInfo(
-        server=server,
-        insecure=True,
-        scheme='Bearer',
-        token=token,
-    )
+    return kopf.login_via_client(**kwargs)

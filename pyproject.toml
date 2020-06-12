@@ -6,7 +6,7 @@ authors = ["Ohad David <ohad.david@google.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-kopf = "0.27rc6"
+kopf = "0.27"
 kubernetes = "^11.0.0"
 
 [tool.poetry.dev-dependencies]

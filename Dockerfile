@@ -10,6 +10,7 @@ FROM python:3.7-slim
 COPY --from=build /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
 
 WORKDIR /code
+
 COPY node_role_label_controller ./node_role_label_controller
 
 CMD ["python3", "-m", "kopf", "run", "node_role_label_controller/main.py"]
